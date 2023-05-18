@@ -22,6 +22,9 @@ app.use(cookieParser());
 const route = require('./routes/index')
 route(app)
 
+// bcrypt
+const bcrypt = require('bcrypt')
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}, webserver: http://localhost:${port}`)
 })
