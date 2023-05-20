@@ -1,5 +1,5 @@
 const User = require('../models/user.model')
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
 const dotenv = require('dotenv')
 dotenv.config()
 const express = require('express')
@@ -11,6 +11,18 @@ app.use(express.urlencoded({
 
 class UserControllers{
     
+    getwhereuser(req, res, next){
+        User.findAll('username', {'username': '21520208'}, (err, data) => {
+            if (!err) {
+                res.status(200).send(data)
+            }
+            else {
+                console.log("Find is error: ", err)
+                res.status(500).send('Server error responses')
+            }
+        })
+    }
+
     // [GET] /user/:id
     getuserbyid(req, res, next){
         User.findbyid(req.params.id, (err, data) => {
@@ -56,5 +68,6 @@ class UserControllers{
             }
         })
     }
+
 }
 module.exports = new UserControllers

@@ -47,6 +47,35 @@ function userModle() {
             }
         })
     }
+    this.findAll = async (where, datafind, callback) => {
+        const pool = await connect
+        var sqlString = `SELECT * FROM ${process.env.DB_USERADMS} WHERE ${where} = ${datafind[where]}`
+        return await pool.request()
+        .query(sqlString, (err, data) => {
+            if (data.recordset.length > 0) {
+                callback(null, data.recordset)
+            }
+            else {
+                callback(true, null)
+            }
+        })
+    }
+    this.updatebyid = async (id ,dataupdate, callback) => {
+        const pool = await connect
+        var sqlString = `UPDATE ${process.env.DB_USERADMS} SET password = @password, dateupdatepassword = @dateupdatepassword, firstlogin = 0 WHERE id = @id`
+        return await pool.request()
+        .input('password', dataupdate.password)
+        .input('dateupdatepassword', dataupdate.dateupdatepassword)
+        .input('id', id)
+        .query(sqlString, (err, data) => {
+            if (err) {
+                callback(err, null)
+            }
+            else {
+                callback(null, 'Update object successfully !!!')
+            }
+        })
+    }
 }
 
 module.exports = new userModle
