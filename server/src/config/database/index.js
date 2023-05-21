@@ -23,5 +23,5 @@ const connect = new sql.ConnectionPool(sqlConfig).connect().then(pool => {return
     console.log("err connect db: ", err)
 })
 
-module.exports = connect
+module.exports = {connect, sql}
 

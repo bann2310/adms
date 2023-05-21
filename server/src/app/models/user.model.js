@@ -1,4 +1,4 @@
-const connect = require('../../config/database/index')
+const {connect, sql} = require('../../config/database/index')
 const dotenv = require('dotenv')
 dotenv.config()
 
@@ -7,7 +7,7 @@ function userModle() {
         const pool = await connect
         var sqlString = `SELECT * FROM ${process.env.DB_USERADMS} WHERE id = @id`
         return await pool.request()
-        .input('id', id)
+        .input('id', sql.Int ,id)
         .query(sqlString, (err, data) => {
             if (data.recordset.length > 0) {
                 callback(null, data.recordset)
@@ -21,10 +21,10 @@ function userModle() {
         const pool = await connect
         var sqlString = `INSERT INTO ${process.env.DB_USERADMS} (username, password, email, role) VALUES (@username, @password, @email, @role)`
         return await pool.request()
-        .input('username', newdata.username)
-        .input('password', newdata.password)
-        .input('email', newdata.email)
-        .input('role', newdata.role)
+        .input('username', sql.VarChar, newdata.username)
+        .input('password', sql.VarChar, newdata.password)
+        .input('email', sql.VarChar, newdata.email)
+        .input('role', sql.VarChar, newdata.role)
         .query(sqlString, (err, data) => {
             if (err) {
                 callback(err, null)
@@ -60,13 +60,43 @@ function userModle() {
             }
         })
     }
-    this.updatebyid = async (id ,dataupdate, callback) => {
+    this.updatebyfirstlogin = async (id ,dataupdate, callback) => {
         const pool = await connect
         var sqlString = `UPDATE ${process.env.DB_USERADMS} SET password = @password, dateupdatepassword = @dateupdatepassword, firstlogin = 0 WHERE id = @id`
         return await pool.request()
-        .input('password', dataupdate.password)
-        .input('dateupdatepassword', dataupdate.dateupdatepassword)
-        .input('id', id)
+        .input('id', sql.Int, id)
+        .input('password', sql.VarChar, dataupdate.password)
+        .input('dateupdatepassword', sql.SmallDateTime, dataupdate.dateupdatepassword)
+        .query(sqlString, (err, data) => {
+            if (err) {
+                callback(err, null)
+            }
+            else {
+                callback(null, 'Update object successfully !!!')
+            }
+        })
+    }
+    this.findidbyemail = async (mail, callback) => {
+        const pool = await connect
+        var sqlString = `SELECT id FROM ${process.env.DB_USERADMS} WHERE email = @email`
+        return await pool.request()
+        .input('email', sql.VarChar, mail)
+        .query(sqlString, (err, data) => {
+            if (data.recordset.length > 0) {
+                callback(null, data.recordset)
+            }
+            else {
+                callback(true, null)
+            }
+        })
+    }
+    this.upatedatereset = async (id ,dataupdate, callback) => {
+        const pool = await connect
+        var sqlString = `UPDATE ${process.env.DB_USERADMS} SET password = @password, dateupdatepassword = @dateupdatepassword WHERE id = @id`
+        return await pool.request()
+        .input('id', sql.Int, id)
+        .input('password', sql.VarChar, dataupdate.password)
+        .input('dateupdatepassword', sql.SmallDateTime, dataupdate.dateupdatepassword)
         .query(sqlString, (err, data) => {
             if (err) {
                 callback(err, null)

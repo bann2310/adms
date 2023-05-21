@@ -16,6 +16,8 @@ SELECT TOP (1000) [id_user]
       ,[expire]
   FROM [ADMS].[dbo].[sendcodeADMS]
 
+
+
   /****** Script for SelectTopNRows command from SSMS  ******/
 SELECT TOP (1000) [username]
       ,[timelogin]
@@ -65,3 +67,10 @@ CREATE TABLE loginADMS(
 	PRIMARY KEY(username),
 	FOREIGN KEY (username) REFERENCES userADMS(username),
 )
+
+UPDATE userADMS SET password = 'asb', dateupdatepassword = '2023-05-13 16:47:00', firstlogin = 0 WHERE id = 3
+
+DELETE FROM userADMS
+
+DELETE FROM userADMS
+WHERE id = 4
