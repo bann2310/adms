@@ -1,20 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="app">
-        <header>
-
-        </header>
-        {{{body}}}
-        <footer>
-
-        </footer>
-    </div>
-</body>
-</html>
+<section>
+        <div class="img-bg">
+            <img src="asset/img/image.png" alt="">
+        </div>
+        <div class="form-login">
+            <h2 class="login-title">Welcome</h2>
+            <form action="" class="form">
+                <div class="input-box">
+                <input type="text" required>
+                <label class="input-title">Username</label>
+                </div>
+                <div class="input-box">
+                <input id="myInput" type="password" required>
+                <label class="input-title">Password</label>
+                <span id="eye-click" class="material-symbols-outlined " onclick="hideFuntion()">visibility_off</span>
+                <span class="material-symbols-outlined" onclick="hideFuntion()">visibility</span>
+                </div>
+                <div class="login-fail eye-off">  <!-- hàm eye-off để ẩn login-fail  -->
+                    <span class="material-symbols-outlined">warning</span>
+                    <p>The Username or password is incorrect</p>
+                </div>
+                
+                <div class="remem-fogot">
+                    <label for="check" class="input-title">
+                    <input type="checkbox" id="check">Remember me?</label>
+                    <a href="#" class="forgot-password">Forgotten password?</a> 
+                </div>
+                
+                <button type="submit" class="btn-login">Login</button>
+   
+            </form>
+        </div>
+         
+</section>
