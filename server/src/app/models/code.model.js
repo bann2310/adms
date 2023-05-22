@@ -49,6 +49,20 @@ function codeModle() {
             }
         })
     }
+    this.getprodandexpbyid = async (id, callback) => {
+        const pool = await connect
+        var sqlString = `SELECT prod, expire FROM ${process.env.DB_CODEADMS} WHERE id_user = @id_user`
+        return await pool.request()
+        .input('id_user', id)
+        .query(sqlString, (err, data) => {
+            if (data.recordset.length > 0) {
+                callback(null, data.recordset)
+            }
+            else {
+                callback(true, null)
+            }
+        })
+    }
 }
 
 module.exports = new codeModle

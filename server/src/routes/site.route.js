@@ -9,6 +9,7 @@ const Logout = require('../app/auths/logout.auth')
 const Login_check = require('../app/middlewares/login.middleware')
 const Forgot = require('../app/auths/forgot.auth')
 
+router.get('/forgot/resend', Forgot.resendcode)
 router.post('/forgot/reset', Forgot.updatepassword)
 router.post('/forgot/code', Forgot.checkcode)
 router.post('/forgot', Forgot.checkmail)

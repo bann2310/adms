@@ -23,14 +23,20 @@ function Forgot(req, res, next) {
             if (!err) {
                 this.sendmail({'id': data[0].id, 'email': req.body.email})
                 var token = jwt.sign({
-                    _id: data[0].id
+                    id: data[0].id,
+                    email: req.body.email
                 }, process.env.SECRETKEY)
+                res.cookie('adms__', token, {
+                    maxAge: 30*60*1000,
+                    httpOnly: false,
+                    secure: true
+                })
                 res.cookie('reset', token, {
                     maxAge: 3*60*1000,
                     httpOnly: false,
                     secure: true
                 })        
-                res.send('<h1 style="text-align:center;">Verification</h1><form method="POST" action="/forgot/code"><label for="code">Code: </label><input type="code" id="code" name="code"/> <br/>  <label for="resend">I didn’t receive code!: <a href="">Resend code</a></label> <br/><button type="submit" id="confirm">Reset</button></form>')
+                res.send('<h1 style="text-align:center;">Verification</h1><form method="POST" action="/forgot/code"><label for="code">Code: </label><input type="code" id="code" name="code"/> <br/>  <label for="resend">I didn’t receive code!: <a href="/forgot/resend">Resend code</a></label> <br/><button type="submit" id="confirm">Reset</button></form>')
             }
             else {
                 res.status(400).send('Email does not exits!!!')
@@ -66,7 +72,7 @@ function Forgot(req, res, next) {
         const token = req.cookies.reset
         const code_input = req.body.code
         if (token){
-            var id = jwt.verify(token, process.env.SECRETKEY)._id
+            var id = jwt.verify(token, process.env.SECRETKEY).id
             Code.getcodebyid(id, (err, data) => {
                 if (!err) {
                     const code_data = data[0].code
@@ -89,7 +95,7 @@ function Forgot(req, res, next) {
 
     this.updatepassword = (req, res, next) => {
         const token = req.cookies.reset
-        var id = jwt.decode(token,process.env.SECRETKEY)._id
+        var id = jwt.decode(token,process.env.SECRETKEY).id
         var password = req.body.password
         var password_cf = req.body.password_cf
         if (password == password_cf) {
@@ -111,6 +117,23 @@ function Forgot(req, res, next) {
         }
         else {
             res.status(400).send('Password do not match')
+        }
+    }
+
+    this.resendcode = (req, res, next) => {
+        const token = req.cookies.reset
+        if (token) {
+            console.log(token.expiry)
+        }
+        else {
+            var data = req.cookies.adms__
+            if (data) {
+                data = jwt.decode(data,process.env.SECRETKEY)
+                this.sendmail(data)
+            }
+            else {
+                res.redirect('/forgot')
+            }
         }
     }
 }

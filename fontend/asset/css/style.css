@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@300&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Asap', sans-serif; 
+    box-sizing: border-box;
+    font-weight: 500;
+    line-height: 24px;
+}
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+section .img-bg{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.img-bg img{
+    width: 100%;
+    height: 100vh;
+}
+.form-login{
+    background-color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 15%;
+    right: 9.75%;
+    width: 450px;
+    height: 550px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    margin: 0 38px;
+}
+label{
+    font-size: 22px;
+}
+.form{
+    margin: 0 38px;
+}
+.login-title{
+    display: flex;
+    justify-content: center;
+    color: #050219;
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 73px;
+    padding: 48px;
+    padding-bottom: 0;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    border-bottom: 2px solid #000;
+    margin: 60px 0 ;
+    margin-bottom: 20px;
+
+}
+.input-box input {  
+    border: none;
+    background: none;
+    outline: none;
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+}
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    font-weight: 500;
+    pointer-events: none;
+    transform: translateY(-65%);
+    transition: .5s;
+}
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -8px ;
+    opacity: 0.6;
+    font-size: 14px;
+}
+.input-box > span{
+    position: absolute;
+    right: 5px;
+    width: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+.eye-off{
+    visibility: hidden;
+}
+.login-fail{
+    position: relative;
+    background-color: #E64F4F;
+    height: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+}
+.login-fail > p{ 
+    font-size: 18px;
+}
+.login-fail > span{
+
+    font-size: 24px;
+}
+.login-fail > span,p{
+    position: inherit;
+    display: inline-block;
+    top: 25%;   
+    color: #ffffff;
+    font-weight: 300;  
+    vertical-align: middle;
+}
+.remem-fogot{
+    font-size: 16px;
+    margin-top: 16px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    align-items: baseline;
+
+}
+.remem-fogot .input-title{
+    font-size: 16px;
+
+}
+#check{
+    margin-right: 9px;
+    width: 18px;
+    height: 18px;
+    transform:translateY(4px);
+    border-radius: 0px;
+}
+.btn-login{
+    width: 100%;
+    height: 42px;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #1b04b3;
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+}
+.forgot-password{
+    color: #000;
+    text-decoration: none;
+}
+
