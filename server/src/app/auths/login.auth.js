@@ -18,31 +18,38 @@ const bcrypt = require('bcrypt')
 const dotenv = require('dotenv')
 dotenv.config()
 
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
     const username = req.body.username
     const password = req.body.password 
-    User.findAll('username', {username: username}, (err, data) => {
-        if (!err) {
-            var login = bcrypt.compareSync(password, data[0].password)
-            if (login) {
-                var id = data[0].id
-                var token = jwt.sign({
-                    _id: id
-                }, process.env.SECRETKEY)
-                res.cookie('login', token, {
-                    maxAge: 2*60*60*1000,
-                    httpOnly: false,
-                    secure: true
-                })
-                req.data = data[0]
-                next()
+
+    if (!username || !password) {
+        return res.status(400).json({
+          message: "Username or Password not present",
+        })
+    } 
+        User.findAll('username', {username: username}, async (err, data) => {
+            if (!err) {
+                var login = await bcrypt.compare(password, data[0].password)
+                if (login) {
+                    var id = data[0].id
+                    var token = jwt.sign({
+                        _id: id
+                    }, process.env.SECRETKEY)
+                    res.cookie('login', token, {
+                        maxAge: 2*60*60*1000,
+                        httpOnly: false,
+                        secure: true
+                    })
+                    req.data = data[0]
+                    next()
+                }
+                else {
+                    res.status(401).json({err:'Username or password is incorrect'})
+                }
             }
             else {
-                res.status(404).send('Username or password is incorrect')
+                res.status(402).json({err:'Username is not exist!!!'})
             }
-        }
-        else {
-            res.status(400).send('Username is not exist!!!')
-        }
-    })
+        })
+    
 }

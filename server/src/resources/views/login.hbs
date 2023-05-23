@@ -1,34 +1,48 @@
 <section>
         <div class="img-bg">
-            <img src="asset/img/image.png" alt="">
+            <img src="public/imgs/image.png" alt="">
         </div>
         <div class="form-login">
             <h2 class="login-title">Welcome</h2>
-            <form action="" class="form">
+            <form id="form" class="form">
+                
                 <div class="input-box">
-                <input type="text" required>
-                <label class="input-title">Username</label>
+                <input type="username" name="username" id="username">
+                <label class="input-title" for="username">Username</label>
                 </div>
+                
                 <div class="input-box">
-                <input id="myInput" type="password" required>
-                <label class="input-title">Password</label>
+                <input type="password" name="password" id="password">
+                <label class="input-title" for="password">Password</label>
                 <span id="eye-click" class="material-symbols-outlined " onclick="hideFuntion()">visibility_off</span>
                 <span class="material-symbols-outlined" onclick="hideFuntion()">visibility</span>
                 </div>
-                <div class="login-fail eye-off">  <!-- hàm eye-off để ẩn login-fail  -->
+                
+                <div class="login-fail eye-off" id="loginfail">  <!-- hàm eye-off để ẩn login-fail  -->
                     <span class="material-symbols-outlined">warning</span>
                     <p>The Username or password is incorrect</p>
                 </div>
                 
                 <div class="remem-fogot">
                     <label for="check" class="input-title">
-                    <input type="checkbox" id="check">Remember me?</label>
-                    <a href="#" class="forgot-password">Forgotten password?</a> 
+                    <input type="checkbox" id="check">Remember me</label>
+                    <a href="/forgot" class="forgot-password">Forgotten password?</a> 
                 </div>
                 
                 <button type="submit" class="btn-login">Login</button>
    
             </form>
-        </div>
-         
+        </div>     
 </section>
+
+
+{{!-- <h1 style="text-align:center;">Login</h1>
+<form id="form">
+<label for="username">Username: </label> 
+<input type="username" id="username" name="username"/> <br/>
+<label for="password">Password: </label> 
+<input type="password" id="password" name="password"/> <br/>
+<button type="submit" id="confirm">Confirm</button>
+</form> --}}
+
+<script src="./public/js/login.js"></script>  
