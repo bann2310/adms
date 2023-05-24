@@ -10,7 +10,13 @@ class SiteControllers{
         res.render('firstlogin')
     }
     homeforgot(req, res, next) {
-        res.send('<h1 style="text-align:center;">Forgotten Password?</h1><form method="POST" action="/forgot"><label for="email">Email: </label>  <input type="email" id="email" name="email"/> <br/>  <button type="submit" id="confirm">Confirm</button></form>')
+        res.render('forgot')
+    }
+    homecode(req, res, next) {
+        res.render('code')
+    }
+    homereset(req, res, next) {
+        res.render('reset')
     }
 }
 module.exports = new SiteControllers

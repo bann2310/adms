@@ -4,7 +4,7 @@ const form = document.querySelector('#form')
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault()
-  const res = await fetch('/login/firstlogin', {
+  const res = await fetch('/forgot/reset', {
     method: 'POST',
      body: JSON.stringify({ password: password.value, password_cf: password_cf.value }),
     headers: { 'Content-Type': 'application/json' }
@@ -19,11 +19,6 @@ form.addEventListener('submit', async (event) => {
       console.log(err)
       const hidden = document.querySelector('.hidden')
       hidden.setAttribute('class','form__fail')
-    }
-    else if (res.status === 500)
-    {
-      console.log(err)
-      location.assign('/login')
     }
   }
 })

@@ -23,11 +23,6 @@ footer {
     display: flex;
 }
 
-.form__tittle{
-    font-size: 64px;
-    text-align: center;
-}
-
 .form{
     width: 400px;
     height: 450px;
@@ -38,17 +33,23 @@ footer {
     padding: 35px;  
     box-sizing: border-box;
 }
-
-
+.script__tille{
+    font-size: 32px;
+    font-weight: bold;
+}
+.script__script{
+    font-size: 16px;
+    font-weight: 400;
+}
 .form__form{
     margin-top: 50px;
 }
-.form__format{
+.form__code{
     display: flex;
     flex-direction: column;
     border-bottom: 2px solid black;
 }
-.format__input{
+.code__input{
     border: none;
     background: none;
     outline: none;
@@ -57,15 +58,12 @@ footer {
     font-size: 18px;
     margin-top: 5px;
 }
-.form__format + .form__format{
-    margin-top: 20px;
-}
-.form__format label{
+.form__code label{
     font-size: 14px;
     opacity: 0.6;
 }
 .form__confirm{
-    margin-top: 10px;
+    margin-top: 70px;
     width: 100%;
     height: 30px;
     font-size: 24;
@@ -75,8 +73,15 @@ footer {
     border-radius: 5px;
     cursor: pointer;
 }
+.form__resend{
+    margin-top: 10px;
+    font-size: 16px;
+}
+.form__resend a{
+    text-decoration: none;
+    color: #ff0000;
+}
 .form__fail {
-    padding-top: 10px ;
     width: 100%;
     height: 30px;
     font-size: 16px;
@@ -85,27 +90,9 @@ footer {
     border-radius: 5px;
     text-align:center;
     margin-top: 10px;
+    padding-top: 10px;
 }
 .hidden{
     visibility: hidden;
-}
-
-.form__rf{
-    display: flex;
-    justify-content: space-between;
-}
-
-.rf__{
-    font-size: 16px;
-}
-
-.form__rf a{
-    text-decoration: none;
-    color: #ff0000;
-}
-
-.rf__ input{
-    position: relative;
-    top:1px;
 }
 

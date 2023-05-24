@@ -1,0 +1,29 @@
+<head>
+    <link rel="stylesheet" href="../css/code.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Forgotten password page</title>
+</head>
+
+<div class="form">
+    <h1 class="form__script script__tillr">Verification</h1>
+    <h2 class="form__script script__script">Please enter your verification </br>code we just sent you on your email address</h2>
+    <form class="form__form" id="form">
+    
+        <div class="form__code">
+            <label for="code">Code</label> 
+            <input type="code" class="code__input" id="code" name="code"/>
+        </div>
+
+        <div class="form__resend">
+            I didn’t receive code! <a href="">Resend code</a>
+        </div>
+
+        <div class="form__fail hidden" id="hidden"></div>
+
+        <button type="submit" class="form__confirm">Reset</button>
+    
+    </form>
+</div>
+
+
+<script src="../../js/code.js"></script>  

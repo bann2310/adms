@@ -36,10 +36,10 @@ function Forgot(req, res, next) {
                     httpOnly: false,
                     secure: true
                 })        
-                res.send('<h1 style="text-align:center;">Verification</h1><form method="POST" action="/forgot/code"><label for="code">Code: </label><input type="code" id="code" name="code"/> <br/>  <label for="resend">I didn’t receive code!: <a href="/forgot/resend">Resend code</a></label> <br/><button type="submit" id="confirm">Reset</button></form>')
+                res.redirect('/forgot/code')
             }
             else {
-                res.status(400).send('Email does not exits!!!')
+                res.status(400).json('Email does not exits!!!')
             }
         })
     }
@@ -77,19 +77,19 @@ function Forgot(req, res, next) {
                 if (!err) {
                     const code_data = data[0].code
                     if (code_input != code_data) {
-                        res.status(400).send('Code is not correct !!!')
+                        res.status(401).json('This Code is incorrect !!!')
                     }
                     else {
-                        res.send('<h1 style="text-align:center;">RESET LOGIN</h1><form method="POST" action="/forgot/reset"><label for="password">New password: </label>  <input type="password" id="password" name="password"/> <br/>  <label for="password">Confirm password: </label>  <input type="password" id="password_cf" name="password_cf"/> <br/><button type="submit" id="confirm">Confirm</button></form>')
+                        res.redirect('/forgot/reset')
                     }
                 }
                 else {
-                    res.status(500).send('Server error responses')
+                    res.status(500).json('Server error responses')
                 }
             })
         }
         else{
-            res.status(400).send('Code is expired !!!')
+            res.status(402).json('Code is expired !!!')
         }
     }
 
@@ -107,7 +107,7 @@ function Forgot(req, res, next) {
             }, (err, result) => {
                 if (err) {
                     console.log('Update: ', err)
-                    res.status(500).send('Server error responses')
+                    res.status(500).json('Server error responses')
                 }
                 else {
                     res.clearCookie('reset')
@@ -116,7 +116,7 @@ function Forgot(req, res, next) {
             })
         }
         else {
-            res.status(400).send('Password do not match')
+            res.status(400).json('Password do not match')
         }
     }
 
