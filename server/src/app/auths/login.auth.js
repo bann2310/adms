@@ -33,14 +33,14 @@ module.exports = async (req, res, next) => {
                 if (login) {
                     var id = data[0].id
                     var token = jwt.sign({
-                        _id: id
+                        "id": id
                     }, process.env.SECRETKEY)
                     res.cookie('login', token, {
                         maxAge: 2*60*60*1000,
                         httpOnly: false,
                         secure: true
                     })
-                    req.data = data[0]
+                    req.body = id
                     next()
                 }
                 else {

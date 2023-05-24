@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@300&display=swap');
+
+header {
+    display: none;
+}
+footer {
+    display: none;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Asap', sans-serif; 
+}
+
+.app{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../imgs/image.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+}
+
+.form{
+    width: 400px;
+    height: 450px;
+    margin: auto;
+    background-color: white;
+    border-radius: 20px;
+    opacity: 0.8; 
+    padding: 35px;  
+    box-sizing: border-box;
+}
+.script__tille{
+    font-size: 32px;
+    font-weight: bold;
+}
+.script__script{
+    font-size: 20px;
+    font-weight: 400;
+}
+.form__form{
+    margin-top: 50px;
+}
+.form__pd{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid black;
+}
+.pd__input{
+    border: none;
+    background: none;
+    outline: none;
+    position: relative;
+    top: -5px;
+    font-size: 18px;
+    margin-top: 5px;
+}
+.form__pd + .form__pd{
+    margin-top: 20px;
+}
+.form__pd label{
+    font-size: 14px;
+    opacity: 0.6;
+}
+/* .form__confirm{
+    margin-top: 70px;
+    width: 100%;
+    height: 30px;
+    font-size: 24;
+    color: #fff;
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+} */
+.form__fail{
+    width: 100%;
+    height: 30px;
+    font-size: 16px;
+    color: white;
+    background-color: #E64F4F;
+    border-radius: 5px;
+    text-align:center;
+    text-justify: center;
+}
+.hidden{
+    visibility: hidden;
+}
+

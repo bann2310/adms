@@ -10,11 +10,20 @@ form.addEventListener('submit', async (event) => {
      body: JSON.stringify({ username: username.value, password: password.value }),
     headers: { 'Content-Type': 'application/json' }
     })
-  const data = await res.json()
-  if (res.status === 401 || res.status === 402)
-  {
-    const loginfail = document.querySelector('#loginfail')
-    loginfail.setAttribute("class", "null")
+  if (res.redirected) {
+    window.location.href = res.url
+  }
+  else {
+    const error = await res.json()
+    if (res.status === 401)
+    {
+      console.log(error)
+      const loginfail = document.querySelector('#loginfail')
+      loginfail.setAttribute("class", "null")
+    }
+    else if (res.status === 402) {
+      console.log(error)
+    }
   }
 })
 

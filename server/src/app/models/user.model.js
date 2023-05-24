@@ -106,6 +106,20 @@ function userModle() {
             }
         })
     }
+    this.findfirstloginbyid = async (id, callback) => {
+        const pool = await connect
+        var sqlString = `SELECT firstlogin FROM ${process.env.DB_USERADMS} WHERE id = @id`
+        return await pool.request()
+        .input('id', sql.Int, id)
+        .query(sqlString, (err, data) =>{
+            if (data.recordset.length > 0) {
+                callback(null, data.recordset)
+            }
+            else {
+                callback(true, null)
+            }
+        })
+    }
 }
 
 module.exports = new userModle
