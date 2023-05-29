@@ -3,6 +3,20 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 function userModle() {
+    this.getnamebyid = async (id, callback) => {
+        const pool = await connect
+        var sqlString = `SELECT name FROM ${process.env.DB_USERADMS} WHERE id = @id`
+        return await pool.request()
+        .input('id', sql.Int ,id)
+        .query(sqlString, (err, data) => {
+            if (data.recordset.length > 0) {
+                callback(null, data.recordset)
+            }
+            else {
+                callback(true, null)
+            }
+        })
+    }
     this.findbyid = async (id, callback) => {
         const pool = await connect
         var sqlString = `SELECT * FROM ${process.env.DB_USERADMS} WHERE id = @id`
@@ -19,8 +33,9 @@ function userModle() {
     }
     this.create = async (newdata, callback) => {
         const pool = await connect
-        var sqlString = `INSERT INTO ${process.env.DB_USERADMS} (username, password, email, role) VALUES (@username, @password, @email, @role)`
+        var sqlString = `INSERT INTO ${process.env.DB_USERADMS} (name, username, password, email, role) VALUES (@name, @username, @password, @email, @role)`
         return await pool.request()
+        .input('name', sql.NVarChar, newdata.name)
         .input('username', sql.VarChar, newdata.username)
         .input('password', sql.VarChar, newdata.password)
         .input('email', sql.VarChar, newdata.email)

@@ -8,9 +8,23 @@ app.use(express.urlencoded({
     extended: true
   }));
   app.use(express.json())
+const jwt = require('jsonwebtoken')
 
 class UserControllers{
-    
+    getname(req, res, next){
+        var cookie = req.query.id
+        var id = jwt.decode(cookie, process.env.SECRETKEY).id
+        User.getnamebyid(id, (err, data) => {
+            if (!err) {
+                res.status(200).json(data[0].name)
+            }
+            else {
+                console.log("Find is error: ", err)
+                res.status(500).json('Server error responses')
+            }
+        })
+    }
+
     getwhereuser(req, res, next){
         User.findAll('username', {'username': '21520208'}, (err, data) => {
             if (!err) {
@@ -39,6 +53,7 @@ class UserControllers{
     // [POST] /user
     adduser(req, res, next){
         User.create({
+            name: req.body.name,
             username: req.body.username, 
             password: bcrypt.hashSync(req.body.password, +process.env.SALTROUNDS),
             email: req.body.email,

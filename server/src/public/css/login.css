@@ -90,7 +90,9 @@ footer {
     visibility: hidden;
 }
 
+
 .form__rf{
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
 }

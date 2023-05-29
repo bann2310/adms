@@ -1,1 +1,59 @@
-<header>Header</header>
+<header class="app__header">
+    <style>
+    .header{
+        width: 80vw;
+        height: 60px;
+        background-color: white;
+        border-radius: 50px;
+        display: flex;
+        text-align: center;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 20px;
+    }
+    .header-list__img{
+        height: 50px;
+        margin-right: 20px;
+    }
+    .header-list__tille + .header-list__tille{
+        margin-left: 20px ;
+    }
+    .header__logout{
+        box-sizing: border-box;
+        padding: 15px ;
+        height: 50px;
+        width: 100px;
+        background-color: blue;
+        color: white;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+    .header-list{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    </style>
+    <div class="header">
+        <div class="header-list">
+            <img class="header-list__img" src="../imgs/logodoan.png" alt="">
+            <div class="header-list__tille">Account</div>
+            <div class="header-list__tille">Create</div>
+            <div class="header-list__tille">View</div>
+            <div class="header-list__tille">Report</div>
+        </div>
+        <div class="header__logout" onclick="logout()">Logout</div>
+    </div>
+    <script>
+        async function logout() {
+            const res = await fetch(`/logout`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            })
+             if (res.redirected) {
+                window.location.href = res.url
+            }
+        }
+    </script>
+</header>

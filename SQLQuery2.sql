@@ -50,6 +50,7 @@ DROP TABLE sendcodeADMS
 
 CREATE TABLE userADMS(
 	id int not null IDENTITY(1,1) PRIMARY KEY,
+	name nvarchar(255) null,
 	username varchar(255) not null UNIQUE,
 	password varchar(255) not null,
 	email varchar(255) not null UNIQUE,
@@ -67,6 +68,8 @@ CREATE TABLE loginADMS(
 	PRIMARY KEY(username),
 	FOREIGN KEY (username) REFERENCES userADMS(username),
 )
+
+DROP TABLE loginADMS
 
 UPDATE userADMS SET password = 'asb', dateupdatepassword = '2023-05-13 16:47:00', firstlogin = 0 WHERE id = 3
 
