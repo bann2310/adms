@@ -30,12 +30,7 @@ function Forgot(req, res, next) {
                     maxAge: 30*60*1000,
                     httpOnly: false,
                     secure: true
-                })
-                res.cookie('reset', token, {
-                    maxAge: 3*60*1000,
-                    httpOnly: false,
-                    secure: true
-                })        
+                })      
                 res.redirect('/forgot/code')
             }
             else {
@@ -57,10 +52,9 @@ function Forgot(req, res, next) {
         const expire = new Date()
         expire.setTime(expire.getTime() + 180000)
         const num = generate_number()
-
         Code.create({id_user: id_user, code: num, email: email, prod: prod, expire: expire}, (err, result) => {
             if (err) {
-                res.status(500).send('Server error responses')
+                res.status(500).json('Server error responses')
             }
         })
 
@@ -69,9 +63,9 @@ function Forgot(req, res, next) {
     }
 
     this.checkcode = (req, res, next) => {
-        const token = req.cookies.reset
-        const code_input = req.body.code
+        const token = req.cookies.adms__
         if (token){
+            const code_input = req.body.code
             var id = jwt.verify(token, process.env.SECRETKEY).id
             Code.getcodebyid(id, (err, data) => {
                 if (!err) {
@@ -89,51 +83,70 @@ function Forgot(req, res, next) {
             })
         }
         else{
-            res.status(402).json('Code is expired !!!')
+            res.redirect('/forgot')
         }
+        
     }
 
     this.updatepassword = (req, res, next) => {
-        const token = req.cookies.reset
-        var id = jwt.decode(token,process.env.SECRETKEY).id
-        var password = req.body.password
-        var password_cf = req.body.password_cf
-        if (password == password_cf) {
-            const passwordEncrypted = bcrypt.hashSync(password, +process.env.SALTROUNDS)
-            const date = Date()
-            User.upatedatereset(id, {
-                "password": passwordEncrypted,
-                "dateupdatepassword": date
-            }, (err, result) => {
-                if (err) {
-                    console.log('Update: ', err)
-                    res.status(500).json('Server error responses')
-                }
-                else {
-                    res.clearCookie('reset')
-                    res.redirect('/login')
-                }
-            })
+        const token = req.cookies.adms__
+        if (token) {
+            var id = jwt.decode(token,process.env.SECRETKEY).id
+            var password = req.body.password
+            var password_cf = req.body.password_cf
+            if (password == password_cf) {
+                const passwordEncrypted = bcrypt.hashSync(password, +process.env.SALTROUNDS)
+                const date = new Date()
+                console.log(date)
+                User.upatedatereset(id, {
+                    "password": passwordEncrypted,
+                    "dateupdatepassword": date
+                }, (err, result) => {
+                    if (err) {
+                        console.log('Update: ', err)
+                        res.status(500).json('Server error responses')
+                    }
+                    else {
+                        res.clearCookie('adms__')
+                        res.redirect('/login')
+                    }
+                })
+            }
+            else {
+                res.status(400).json('Password do not match')
+            }
         }
         else {
-            res.status(400).json('Password do not match')
+            res.redirect('/forgot')
         }
     }
 
     this.resendcode = (req, res, next) => {
-        const token = req.cookies.reset
-        if (token) {
-            console.log(token.expiry)
+        var cookie = req.query.id
+        if (cookie) {
+            var data = jwt.decode(cookie, process.env.SECRETKEY)
+            Code.getprodandexpbyid(data.id, (err, data_) => {
+                if (err) {
+                    console.log('Get expire: ', err)
+                    res.status(500).json('Server error responses')
+                }
+                else {
+                    var prod = data_[0].prod
+                    var expire = data_[0].expire
+                    var now = new Date()
+                    var time = now - expire
+                    if (time < 0) {
+                        res.status(302).json(`Wait for ${(time*-1/1000).toFixed(0)} seconds!!!`)
+                    }
+                    else {
+                        this.sendmail(data)
+                        res.status(200).json("Resend code complete")
+                    }
+                }
+            })
         }
         else {
-            var data = req.cookies.adms__
-            if (data) {
-                data = jwt.decode(data,process.env.SECRETKEY)
-                this.sendmail(data)
-            }
-            else {
-                res.redirect('/forgot')
-            }
+            res.redirect('/forgot')
         }
     }
 }

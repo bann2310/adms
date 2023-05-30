@@ -13,21 +13,30 @@
         padding: 0 20px;
     }
     .header-list__img{
-        height: 50px;
+        height: 55px;
         margin-right: 20px;
+    }
+    .header-list__tille {
+        font-size: 25px;
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
     }
     .header-list__tille + .header-list__tille{
         margin-left: 20px ;
     }
     .header__logout{
-        box-sizing: border-box;
-        padding: 15px ;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         height: 50px;
         width: 100px;
         background-color: blue;
         color: white;
         border-radius: 50px;
         cursor: pointer;
+        font-size: 25px;
     }
     .header-list{
         display: flex;
@@ -38,10 +47,18 @@
     <div class="header">
         <div class="header-list">
             <img class="header-list__img" src="../imgs/logodoan.png" alt="">
-            <div class="header-list__tille">Account</div>
-            <div class="header-list__tille">Create</div>
-            <div class="header-list__tille">View</div>
-            <div class="header-list__tille">Report</div>
+            <div class="header-list__tille">
+                <a href="">Account</a>
+            </div>
+            <div class="header-list__tille">
+                <a href="">Create</a>
+            </div>
+            <div class="header-list__tille">
+                <a href="">View</a>
+            </div>
+            <div class="header-list__tille">
+                <a href="">Report</a>
+            </div>
         </div>
         <div class="header__logout" onclick="logout()">Logout</div>
     </div>

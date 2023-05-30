@@ -14,15 +14,13 @@ form.addEventListener('submit', async (event) => {
   }
   else {
     const error = await res.json()
-    if (res.status === 401)
-    {
-      console.log(error)
-      const hidden = document.querySelector('.hidden')
-      hidden.setAttribute('class','form__fail')
-    }
-    else if (res.status === 402) {
-      console.log(error)
-    }
+    const main = document.querySelector('.form__fail')
+      if (main.querySelector('.form__fail--content'))
+        main.removeChild(main.querySelector('.form__fail--content'))
+      var fail = document.createElement('div')
+      fail.classList.add('form__fail','form__fail--content')
+      fail.innerHTML = `${error}`
+      main.appendChild(fail)
   }
 })
 

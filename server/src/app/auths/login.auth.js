@@ -23,9 +23,7 @@ module.exports = async (req, res, next) => {
     const password = req.body.password 
 
     if (!username || !password) {
-        return res.status(400).json({
-          message: "Username or Password not present",
-        })
+        return res.status(400).json("Username or Password not present")
     } 
         User.findAll('username', {username: username}, async (err, data) => {
             if (!err) {
@@ -44,11 +42,11 @@ module.exports = async (req, res, next) => {
                     next()
                 }
                 else {
-                    res.status(401).json({err:'Username or password is incorrect'})
+                    res.status(401).json('Username or password is incorrect')
                 }
             }
             else {
-                res.status(402).json({err:'Username is not exist!!!'})
+                res.status(402).json('Username is not exist!!!')
             }
         })
     

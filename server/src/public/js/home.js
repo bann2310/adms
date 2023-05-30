@@ -14,7 +14,7 @@ function getCookie(cname) {
 }
 
 async function getname() {
-    cookie = getCookie('login')
+    var cookie = getCookie('login')
     const res = await fetch(`/user/getname?id=${cookie}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }

@@ -76,10 +76,14 @@ footer {
 .form__resend{
     margin-top: 10px;
     font-size: 16px;
+    display: flex;
+    flex-direction: row;
 }
-.form__resend a{
+.form__resend .form__resend--resend{
+    margin-left: 2px;
     text-decoration: none;
     color: #ff0000;
+    cursor: pointer;
 }
 .form__fail {
     width: 100%;
@@ -91,8 +95,14 @@ footer {
     text-align:center;
     margin-top: 10px;
     padding-top: 10px;
-}
-.hidden{
     visibility: hidden;
 }
 
+.form__fail .form__fail--content {
+    visibility: initial
+}
+
+.successfull{
+    opacity: 1;
+    background-color: lightgreen;
+}
