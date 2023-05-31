@@ -74,6 +74,21 @@ function Forgot(req, res, next) {
                         res.status(401).json('This Code is incorrect !!!')
                     }
                     else {
+
+                        Code.delete(data.id, (err, result) => {
+                            if (err) {
+                                res.status(500).send('Server error responses')
+                            }
+                        })
+                        var token = jwt.sign({
+                            id: id,
+                        }, process.env.SECRETKEY)
+                        res.cookie('adms___', token, {
+                            maxAge: 30*60*1000,
+                            httpOnly: false,
+                            secure: true
+                        })  
+                        res.clearCookie('adms__')
                         res.redirect('/forgot/reset')
                     }
                 }
@@ -89,7 +104,7 @@ function Forgot(req, res, next) {
     }
 
     this.updatepassword = (req, res, next) => {
-        const token = req.cookies.adms__
+        const token = req.cookies.adms___
         if (token) {
             var id = jwt.decode(token,process.env.SECRETKEY).id
             var password = req.body.password
@@ -97,7 +112,6 @@ function Forgot(req, res, next) {
             if (password == password_cf) {
                 const passwordEncrypted = bcrypt.hashSync(password, +process.env.SALTROUNDS)
                 const date = new Date()
-                console.log(date)
                 User.upatedatereset(id, {
                     "password": passwordEncrypted,
                     "dateupdatepassword": date
@@ -107,7 +121,7 @@ function Forgot(req, res, next) {
                         res.status(500).json('Server error responses')
                     }
                     else {
-                        res.clearCookie('adms__')
+                        res.clearCookie('adms___')
                         res.redirect('/login')
                     }
                 })

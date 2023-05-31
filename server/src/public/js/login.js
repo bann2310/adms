@@ -9,7 +9,7 @@ form.addEventListener('submit', async (event) => {
      body: JSON.stringify({ username: username.value, password: password.value }),
     headers: { 'Content-Type': 'application/json' }
     })
-  if (res.redirected) {
+    if (res.redirected) {
     window.location.href = res.url
   }
   else {
@@ -23,15 +23,3 @@ form.addEventListener('submit', async (event) => {
       main.appendChild(fail)
   }
 })
-
-function hideFuntion() {
-  var x = document.getElementById("myInput");
-  var y = document.getElementById("eye-click");
-  if (x.type === "password") {
-      x.type = "text";
-      y.classList.add("eye-off");
-  } else {
-      x.type = "password";
-      y.classList.remove("eye-off");
-  }
-}

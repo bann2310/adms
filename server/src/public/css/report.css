@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@300&display=swap');
+
+.app__header {
+    z-index: 1;
+    margin-top: 20px;
+    position: relative;
+}
+footer {
+    display: none;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Asap', sans-serif; 
+}
+
+.app{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../imgs/image.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form__title {
+    margin-top: 100px;
+    text-align: center;
+}
+.form__title-1 {
+    font-size: 50px;
+}
+.form__title-2 {
+    opacity: 70%;
+}
+.form {
+    position: absolute;
+    margin-top: 20px;
+    width: 78%;
+    height: calc(100% - 10px);
+    background-color: white;
+    opacity: 80%;
+    border-radius: 50px;
+}
+.form__container {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+    width: 100% - 10px;
+    height: fit-content;
+    padding: 10px 10px 10px 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    background-color: white; 
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.form__container__contact {
+    width: 41%;
+    height: inherit;
+    background-color: #0075FF;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+.form__container__contact-tille1 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.form__container__contact-tille2 {
+    font-size: 15px;
+}
+.form__container__contact-inf {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+li {
+    list-style-type:none
+}
+li + li {
+    margin-top: 20px;
+}
+
+.form__container__fill {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.form__container__fill-form {
+    border-bottom: 2px solid black;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.form__fill-form__input {
+    border: none;
+    background: none;
+    outline: none;
+    position: relative;
+    width: 100%;
+    top: -5px;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.line1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.form__container__confirm {
+    position: relative;
+    right: -70%;
+    width: 100px;
+    height: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: blue;
+    font-size: 18px;
+}

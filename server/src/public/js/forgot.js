@@ -13,6 +13,7 @@ form.addEventListener('submit', async (event) => {
   }
   else {
     const error = await res.json()
+    console.log(error)
     if (res.status === 400)
     {
       console.log(error)
