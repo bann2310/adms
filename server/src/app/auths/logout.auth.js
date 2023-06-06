@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser')
 app.use(cookieParser())
 
 module.exports = (req, res) => {
-    res.clearCookie('login')
+    const cookies = req.cookies;
+    for (const cookieName in cookies) {
+        res.clearCookie(cookieName);
+    }
     res.redirect('/login')
 }

@@ -3,7 +3,6 @@ const password_cf = document.querySelector('#password_cf')
 const form = document.querySelector('#form')
 
 form.addEventListener('submit', async (event) => {
-  console.log('alo')
   event.preventDefault()
   const res = await fetch('/forgot/reset', {
     method: 'POST',

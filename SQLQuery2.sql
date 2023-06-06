@@ -16,13 +16,15 @@ SELECT TOP (1000) [id_user]
       ,[expire]
   FROM [ADMS].[dbo].[sendcodeADMS]
 
+    /****** Script for SelectTopNRows command from SSMS  ******/
+SELECT * FROM [ADMS].[dbo].[documentADMS]
 
-
-  /****** Script for SelectTopNRows command from SSMS  ******/
-SELECT TOP (1000) [username]
-      ,[timelogin]
-      ,[statuslogin]
-  FROM [ADMS].[dbo].[loginADMS]
+	  /****** Script for SelectTopNRows command from SSMS  ******/
+	SELECT TOP (1000) [username]
+		  ,[timelogin]
+		  ,[statuslogin]
+	  FROM [ADMS].[dbo].[loginADMS]
+  DELETE FROM loginADMS WHERE username = '21520208'
 
   DELETE FROM sendcodeADMS WHERE id_user = 1
 
@@ -62,11 +64,9 @@ CREATE TABLE userADMS(
 DROP TABLE userADMS
 
 CREATE TABLE loginADMS(
-	username varchar(255) not null,
+	username varchar(255) null,
 	timelogin smalldatetime null,
 	statuslogin Int null,
-	PRIMARY KEY(username),
-	FOREIGN KEY (username) REFERENCES userADMS(username),
 )
 
 DROP TABLE loginADMS
@@ -77,3 +77,29 @@ DELETE FROM userADMS
 
 DELETE FROM userADMS
 WHERE id = 4
+
+CREATE TABLE documentADMS(
+	id int not null IDENTITY(1,1) PRIMARY KEY,
+	number int not null,
+	namedoc nvarchar(255) not null,
+	datedoc smalldatetime not null,
+	typedoc int not null,
+	termdoc varchar(255) not null,
+	note nvarchar(255),
+	filepri nvarchar(255) not null,
+	fileat nvarchar(255),
+	id_save bigint not null,
+)
+
+DROP TABLE documentADMS
+SELECT * FROM documentADMS WHERE (namedoc LIKE '%3%' OR number LIKE '%3%')
+
+CREATE TABLE reportADMS(
+	id int not null IDENTITY(1,1) PRIMARY KEY,
+	id_user int not null,
+	name nvarchar(255) not null,
+	email nvarchar(255) not null,
+	problem nvarchar(255) not null,
+	descrip nvarchar(max),
+	FOREIGN KEY (id_user) REFERENCES userADMS(id),
+)

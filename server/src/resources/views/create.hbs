@@ -1,0 +1,70 @@
+<head>
+    <link rel="stylesheet" href="./css/create.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Create page</title>
+</head>
+
+<div class="container">
+    <div class="container__title">Nhập thông tin văn bản</div>
+    <form enctype="multipart/form-data" id="form">
+        <div class="container__input">
+            <label for="input">Thêm văn bản</label>
+            <input type="file" class="container__input--input" id="input" name="myfile">
+        </div>
+        <div class="container__content">
+            
+                <div class="container__content--block">
+                    <div class="container__content-item container__content-name">
+                    <label for="name">Tên văn bản</label>
+                    <input type="text" class="container__content-item-input container__content-name--input" id="name" name="name">
+                </div>
+                
+                <div class="container__content-item container__content-number">
+                    <label for="number">Số văn bản</label>
+                    <input type="number" class="container__content-item-input container__content-number--input" id="number" name="number">
+                </div>
+
+                <div class="container__content-item container__content-date">
+                    <label for="date">Ngày ban hành văn bản</label>
+                    <input type="date" class="container__content-item-input container__content-date--input" id="date" name="date">
+                </div>
+
+                <div class="container__content-item container__content-select">
+                    <label for="select">Thể loại văn bản</label>
+                    <select class="container__content-item-input" name="type" id="type">
+                            <option value="none">Chọn danh mục</option>
+                            <option value="40">Báo cáo</option>
+                            <option value="36">Chương trình</option>
+                            <option value="42">Công văn</option>
+                            <option value="43">Hướng dẫn</option>
+                            <option value="35">Kế hoạch</option>
+                            <option value="99">Kế hoạch liên tịch</option>
+                            <option value="87">Quyết định</option>
+                            <option value="41">Thông báo</option>
+                            <option value="44">Thư mời</option>
+                    </select>
+                </div>
+
+                <div class="container__content-item container__content-term">
+                    <label for="term">Nhiệm kỳ</label>
+                    <input type="text" class="container__content-item-input container__content-term--input" id="term" name="term">
+                </div>
+            </div>
+
+            <div class="container__content-note">
+                <label for="note">Ghi chú</label>
+                <input type="text" class="container__content-note--input" id="note" name="note">
+            </div>
+
+            {{!-- <div class="container__content-documentat">
+                <label for="at">Văn bản đính kèm</label>
+                <input type="file" class="container__content-documentat--input" id="documentat" name="documentat">
+            </div> --}}
+
+            <button type="submit" class="form__container__confirm">Thêm văn bản</button>
+        </div>
+    </form>
+</div>
+
+<script src="./js/create.js"></script>  

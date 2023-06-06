@@ -19,7 +19,7 @@
     .header-list__tille {
         font-size: 18px;
     }
-    a {
+    .header-list__tille-link {
         color: inherit;
         text-decoration: none;
     }
@@ -46,18 +46,18 @@
     </style>
     <div class="header">
         <div class="header-list">
-            <img class="header-list__img" src="../imgs/logodoan.png" alt="">
+           <a href="/"><img class="header-list__img" src="../imgs/logodoan.png" alt=""></a>
             <div class="header-list__tille">
-                <a href="">Account</a>
+                <a href="" class="header-list__tille-link">Account</a>
             </div>
             <div class="header-list__tille">
-                <a href="">Create</a>
+                <a href="/create" class="header-list__tille-link">Create</a>
             </div>
             <div class="header-list__tille">
-                <a href="">View</a>
+                <a href="/view" class="header-list__tille-link">View</a>
             </div>
             <div class="header-list__tille report">
-                <a href="/report" id="report">Report</a>
+                <a href="/report" class="header-list__tille-link">Report</a>
             </div>
         </div>
         <div class="header__logout" onclick="logout()">Logout</div>

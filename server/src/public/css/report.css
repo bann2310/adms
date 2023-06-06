@@ -5,6 +5,8 @@
     z-index: 1;
     margin-top: 20px;
     position: relative;
+    border: 2px solid black;
+    border-radius: 50px;
 }
 footer {
     display: none;
@@ -32,6 +34,7 @@ footer {
 }
 .form__title-1 {
     font-size: 50px;
+    font-weight: bold;
 }
 .form__title-2 {
     opacity: 70%;
@@ -41,8 +44,8 @@ footer {
     margin-top: 20px;
     width: 78%;
     height: calc(100% - 10px);
-    background-color: white;
-    opacity: 80%;
+    background-color: rgb(236, 236, 236);
+    /* opacity: 80%; */
     border-radius: 50px;
 }
 .form__container {
@@ -55,7 +58,7 @@ footer {
     margin-left: 10px;
     margin-right: 10px;
     box-sizing: border-box;
-    background-color: white; 
+    background-color: rgb(236, 236, 236); 
     justify-content: center;
     align-items: center;
     border-radius: 10px;
@@ -65,7 +68,7 @@ footer {
     height: inherit;
     background-color: #0075FF;
     color: white;
-    padding: 20px;
+    padding: 50px 20px 50px 20px;
     border-radius: 10px;
 }
 .form__container__contact-tille1 {
