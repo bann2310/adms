@@ -101,5 +101,10 @@ CREATE TABLE reportADMS(
 	email nvarchar(255) not null,
 	problem nvarchar(255) not null,
 	descrip nvarchar(max),
+	datesub smalldatetime,
 	FOREIGN KEY (id_user) REFERENCES userADMS(id),
 )
+SELECT * FROM reportADMS
+DROP TABLE reportADMS
+
+SELECT username FROM (SELECT username, count(*) as countlogin FROM loginADMS GROUP BY username) WHERE countlogin = 5

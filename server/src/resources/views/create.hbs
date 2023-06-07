@@ -10,29 +10,29 @@
     <form enctype="multipart/form-data" id="form">
         <div class="container__input">
             <label for="input">Thêm văn bản</label>
-            <input type="file" class="container__input--input" id="input" name="myfile">
+            <input type="file" class="container__input--input" id="input" name="myfile" required>
         </div>
         <div class="container__content">
             
                 <div class="container__content--block">
                     <div class="container__content-item container__content-name">
                     <label for="name">Tên văn bản</label>
-                    <input type="text" class="container__content-item-input container__content-name--input" id="name" name="name">
+                    <input type="text" class="container__content-item-input container__content-name--input" id="name" name="name" required>
                 </div>
                 
                 <div class="container__content-item container__content-number">
                     <label for="number">Số văn bản</label>
-                    <input type="number" class="container__content-item-input container__content-number--input" id="number" name="number">
+                    <input type="number" class="container__content-item-input container__content-number--input" id="number" name="number" required>
                 </div>
 
                 <div class="container__content-item container__content-date">
                     <label for="date">Ngày ban hành văn bản</label>
-                    <input type="date" class="container__content-item-input container__content-date--input" id="date" name="date">
+                    <input type="date" class="container__content-item-input container__content-date--input" id="date" name="date" required>
                 </div>
 
                 <div class="container__content-item container__content-select">
                     <label for="select">Thể loại văn bản</label>
-                    <select class="container__content-item-input" name="type" id="type">
+                    <select class="container__content-item-input" name="type" id="type" required>
                             <option value="none">Chọn danh mục</option>
                             <option value="40">Báo cáo</option>
                             <option value="36">Chương trình</option>
@@ -48,7 +48,7 @@
 
                 <div class="container__content-item container__content-term">
                     <label for="term">Nhiệm kỳ</label>
-                    <input type="text" class="container__content-item-input container__content-term--input" id="term" name="term">
+                    <input type="text" class="container__content-item-input container__content-term--input" id="term" name="term" required>
                 </div>
             </div>
 

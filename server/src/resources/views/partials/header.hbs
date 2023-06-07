@@ -48,9 +48,6 @@
         <div class="header-list">
            <a href="/"><img class="header-list__img" src="../imgs/logodoan.png" alt=""></a>
             <div class="header-list__tille">
-                <a href="" class="header-list__tille-link">Account</a>
-            </div>
-            <div class="header-list__tille">
                 <a href="/create" class="header-list__tille-link">Create</a>
             </div>
             <div class="header-list__tille">
@@ -63,6 +60,18 @@
         <div class="header__logout" onclick="logout()">Logout</div>
     </div>
     <script>
+        async function getrole() {
+            const res = await fetch(`/getrole`)
+            const data = await res.json()
+            if (data == 'admin')
+            {
+                const div = document.querySelector('.header-list')
+                div.innerHTML += `<div class="header-list__tille">
+                <a href="/account" class="header-list__tille-link">Account</a>
+            </div>`
+            }
+        }
+        getrole()
         async function logout() {
             const res = await fetch(`/logout`, {
                 method: 'GET',

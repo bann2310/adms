@@ -47,6 +47,19 @@ function loginModle() {
             }
         })
     }
+    this.getblock = async (callback) => {
+        const pool = await connect
+        var sqlString = `SELECT username, count(*) as countlogin FROM loginADMS GROUP BY username HAVING count(*) = 5`
+        return await pool.request()
+        .query(sqlString, (err, data) => {
+            if (err) {
+                callback(err, null)
+            }
+            else {
+                callback(null, data.recordset)
+            }
+        })
+    }
 }
 
 module.exports = new loginModle

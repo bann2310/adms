@@ -116,22 +116,22 @@ async function repair() {
     <div class="flex">
         <div class="container-information__items container-information__items__name">
             <label for="name">Tên văn bản</label>
-            <input type="text" class="container-information__items--data container-information__items__name--data" value="${data.namedoc}" id="name">
+            <input type="text" class="container-information__items--data container-information__items__name--data" value="${data.namedoc}" id="name" required>
         </div>
         
         <div class="container-information__items container-information__number">
             <label for="number">Số văn bản</label>
-            <input type="number" class="container-information__items--data container-information__items__number--data" value="${data.number}" id="number">
+            <input type="number" class="container-information__items--data container-information__items__number--data" value="${data.number}" id="number" required>
         </div>
 
         <div class="container-information__items container-information__date">
             <label for="date">Ngày ban hành văn bản</label>
-            <input type="date" class="container-information__items--data container-information__items__date--data" value="${data.datedoc.substring(0, 10)}" id="date">
+            <input type="date" class="container-information__items--data container-information__items__date--data" value="${data.datedoc.substring(0, 10)}" id="date" required>
         </div>
 
         <div class="container-information__items container-information__select">
             <label for="select">Thể loại văn bản</label>
-            <select name="type" class="container-information__items--data container-information__items__select--data" id="type">
+            <select name="type" class="container-information__items--data container-information__items__select--data" id="type" required>
                 <option value="none">Chọn danh mục</option>
                 ${select}
             </select>
@@ -139,12 +139,12 @@ async function repair() {
 
         <div class="container-information__items container-information__term">
             <label for="term">Nhiệm kỳ</label>
-            <input type="text" class="container-information__items--data container-information__items__term--data" value="${data.termdoc}" id="term">
+            <input type="text" class="container-information__items--data container-information__items__term--data" value="${data.termdoc}" id="term" required>
         </div>
 
         <div class="container-information__items container-information__file">
             <label for="input">Thay đổi file</label>
-            <input type="file" class="container-information__items--data container-information__items__file--data" id="input" name="myfile">
+            <input type="file" class="container-information__items--data container-information__items__file--data" id="input" name="myfile" required>
         </div>
 
     </div>

@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@300&display=swap');
+
+.app__header {
+    z-index: 1;
+    margin-top: 20px;
+    /* position: relative; */
+    border: 2px solid black;
+    border-radius: 50px;
+}
+footer {
+    display: none;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Asap', sans-serif; 
+}
+
+.app{
+    width: 100vw;
+    min-height: 1000px;
+    overflow: auto;
+    height: fit-content;
+    background-image: url('../imgs/image.png');
+    background-repeat: no-repeat;
+    background-size:cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.container {
+    position: absolute;
+    width: 78%;
+    min-height: calc(1000px - 30px);
+    height: inherit;
+    overflow: auto;
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 100px 30px 30px 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+.container__title {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    width: 100%;
+    height: 50px;
+}
+.container__account {
+    height: 30%;
+    width: 40%;
+    background-color: #0075FF;
+    color: white;
+    border-radius: 30px;
+}
+.container__account-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.container__account-view {
+    height: 320px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.container__account-view-account {
+    height: 40px;
+    width: 89%;
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.container__account-view-account--delete{
+    color: red;
+}
+
+.container__accountblock {
+    height: 30%;
+    width: 40%;
+    background-color: #0075FF;
+    color: white;
+    border-radius: 30px;
+}
+.container__accountblock-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.container__accountblock-view {
+    height: 320px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.container__accountblock-view-account {
+    height: 40px;
+    width: 89%;
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.container__accountblock-view-account--delete{
+    color: green;
+}
+
+.container__report {
+    height: 30%;
+    width: 40%;
+    background-color: #0075FF;
+    color: white;
+    border-radius: 30px;
+    margin-top: 10px;
+}
+.container__report-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.container__report-view-account--title{
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.container__report-view-account-line-descri {
+    display: flex;
+    flex-direction: column !important;
+}
+
+.container__report-view {
+    height: 320px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.container__report-view-account {
+    height: 50%;
+    width: 89%;
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.container__report-view-account div{
+    
+    display: flex;
+    flex-direction: row;
+}
+
+.container__report-view-account--date {
+    font-size: 12px;
+    opacity: 50%;
+}
+
+.container__create {
+    height: 30%;
+    width: 40%;
+    background-color: #0075FF;
+    color: white;
+    border-radius: 30px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container__create-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.container__create-view-account--title {
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+    opacity: 80%;
+}
+
+.container__create-view {
+    height: 320px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    overflow: auto;
+    padding: 10px 20px 10px 20px;
+    box-sizing: border-box;
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+}
+
+.container__create-view__items {
+    width: 50%;
+    margin-bottom: 8px;
+    padding: 5px 10px 5px 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+form {
+    width: 100%;
+}
+
+.container__create-view__items--data {
+    width: 250px;
+    border: none;
+    background: none;
+    outline: none;
+    margin-top: 5px;
+    font-size: 20px;
+    padding-left: 5px;
+    border-bottom: 2px solid black;
+}
+
+label {
+    font-size: 13px;
+    opacity: 50%;
+}
+
+.container__create-view__submit {
+    height: 40px;
+    width: 100px;
+    background-color: #0075FF;
+    color: white;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+}
+
+.container__create-view__items__error{
+    color: crimson;
+    display: block;
+    font-size: 12px;
+}
+.hiddenuser {
+    visibility: hidden;
+}
+.hiddenemail {
+    visibility: hidden;
+}
+a {
+    color: inherit;
+}

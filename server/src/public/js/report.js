@@ -8,7 +8,7 @@ form.addEventListener('submit', async (event) => {
   event.preventDefault()
   const res = await fetch('/report', {
     method: 'POST',
-     body: JSON.stringify({ name: name.value, email: email.value, problem: problem.value, descrip:  describe.value}),
+     body: JSON.stringify({ name: name.value, email: email.value, problem: problem.value, descrip:  describe.value, time: new Date()}),
     headers: { 'Content-Type': 'application/json' }
     })
     if (res.redirected) {

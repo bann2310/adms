@@ -126,7 +126,6 @@ function doucumentModle() {
         else {
             const pool = await connect
             var sqlString = `UPDATE ${process.env.DB_DOCUMENTADMS} SET number=@number, namedoc=@namedoc, datedoc=@datedoc, typedoc=@typedoc, termdoc=@termdoc, note=@note WHERE id=@id`
-            console.log(sqlString)
             return await pool.request()
             .input('id',sql.Int,newdata.id)
             .input('number',sql.Int,newdata.number)    

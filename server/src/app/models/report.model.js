@@ -5,13 +5,14 @@ dotenv.config()
 function reportModle() {
     this.create = async (newdata, callback) => {
         const pool = await connect
-        var sqlString = `INSERT INTO ${process.env.DB_REPORTADMS} (id_user, name, email, problem, descrip) VALUES (@id_user, @name, @email, @problem, @descrip)`
+        var sqlString = `INSERT INTO ${process.env.DB_REPORTADMS} (id_user, name, email, problem, descrip, datesub) VALUES (@id_user, @name, @email, @problem, @descrip, @datesub)`
         return await pool.request()
         .input('id_user', sql.Int, newdata.id_user)
         .input('name', sql.NVarChar, newdata.name)
         .input('email', sql.NVarChar, newdata.email)
         .input('problem', sql.NVarChar, newdata.problem)
         .input('descrip', sql.NVarChar, newdata.descrip)
+        .input('datesub', sql.NVarChar, newdata.datesub)
         .query(sqlString, (err, data) => {
             if (err) {
                 callback(err, null)

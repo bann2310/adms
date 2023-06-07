@@ -13,6 +13,7 @@ class ReportControllers{
             email: req.body.email,
             problem: req.body.problem,
             descrip: req.body.descrip,
+            datesub: req.body.time,
         }
         Report.create(newdata, (err, data) => {
             if (err) console.log(err)

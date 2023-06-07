@@ -135,6 +135,46 @@ function userModle() {
             }
         })
     }
+    this.remove = async (id, callback) => {
+        const pool = await connect
+        var sqlString = `DELETE FROM userADMS WHERE id = ${id}`
+        return await pool.request()
+        .query(sqlString, (err, data) =>{
+            if (err) {
+                callback(true, null)
+            }
+            else {
+                callback(null, 'Thành công')
+            }
+        })
+    }
+    this.getusername = async (username, callback) => {
+        const pool = await connect
+        var sqlString = `SELECT * FROM userADMS WHERE username = ${username}`
+        return await pool.request()
+        .query(sqlString, (err, data) =>{
+            if (err) {
+                callback(true, null)
+            }
+            else {
+                callback(null, data.recordset.length)
+            }
+        })
+    }
+    this.getemail = async (email, callback) => {
+        const pool = await connect
+        var sqlString = `SELECT * FROM userADMS WHERE email = @email`
+        return await pool.request()
+        .input('email',email)
+        .query(sqlString, (err, data) =>{
+            if (err) {
+                callback(true, null)
+            }
+            else {
+                callback(null, data.recordset.length)
+            }
+        })
+    }
 }
 
 module.exports = new userModle

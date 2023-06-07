@@ -12,12 +12,12 @@
     
         <div class="form__pd">
             <label for="password">New password </label> 
-            <input type="password" class="pd__input" id="password" name="password"/>
+            <input type="password" class="pd__input" id="password" name="password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{8,}"/>
         </div>
         
         <div class="form__pd">
             <label for="password">Confirm password </label> 
-            <input type="password" class="pd__input" id="password_cf" name="password_cf"/>
+            <input type="password" class="pd__input" id="password_cf" name="password_cf" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{8,}"/>
         </div>
 
         <div class="form__fail hidden" id="hidden">Passwords do not match!!!</div>

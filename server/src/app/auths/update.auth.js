@@ -58,6 +58,14 @@ function Update (req, res, next) {
                     var number_save = generate_number()
                     var path = `${number < 10 ? '0' + number : number}-${list_doc[req.body.type]}.DTN-${number_save}.${req.file.filename.split('.').slice(-1)[0]}`
                     fs.renameSync(`./src/public/upload/${req.file.filename}`, `./src/public/upload/${path}`)
+                    Document.getdatabyid(req.body.id, (err, data) => {
+                        fs.unlink(`./src/public/upload/${data[0].filepri}`, (err) => {
+                            if (err) {
+                              console.error(err);
+                              return;
+                            }
+                        })
+                    })
                     newdata = {
                         id: req.body.id,
                         namedoc: req.body.name,

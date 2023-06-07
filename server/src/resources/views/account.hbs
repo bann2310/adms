@@ -1,0 +1,55 @@
+<head>
+    <link rel="stylesheet" href="../css/account.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Account page</title>
+</head>
+
+<div class="container">
+    <div class="container__title">Quản lý tài khoản</div>
+    <div class="container__account">
+        <div class="container__account-title">Tài khoản</div>
+        <div class="container__account-view">
+            
+        </div>
+    </div>
+    <div class="container__accountblock">
+        <div class="container__accountblock-title">Tài khoản bị khóa</div>
+        <div class="container__accountblock-view">
+            
+        </div>
+    </div>
+    <div class="container__report">
+        <div class="container__report-title">Báo cáo lỗi</div>
+        <div class="container__report-view">
+            
+        </div>
+    </div>
+    <div class="container__create">
+        <div class="container__create-title">Tạo account</div>
+        <div class="container__create-view">
+            <form action="" id="form">
+                <div class="container__create-view__items container__create-view__items__name">
+                    <label for="name">Họ và tên</label>
+                    <input type = "text" class="container__create-view__items--data ccontainer__create-view__items__name--data" id="name" required>
+                </div>
+                
+                <div class="container__create-view__items container__create-view__items__username">
+                    <label for="username">Username</label>
+                    <input type="text" class="container__create-view__items--data ccontainer__create-view__items__username--data" id="username" required>
+                    <div class="container__create-view__items__error hiddenuser" id="u">*Username tồn tại</div>
+                </div>
+
+                <div class="container__create-view__items container__create-view__items__email">
+                    <label for="email">Email</label>
+                    <input type="text" class="container__create-view__items--data ccontainer__create-view__items__email--data" id="email" required>
+                    <div class="container__create-view__items__error hiddenemail" id="e">*Email tồn tại</div>
+                </div>
+                <button type="submit" class="container__create-view__submit">Tạo user</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="../js/account.js"></script>  
